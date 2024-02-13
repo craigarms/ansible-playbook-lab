@@ -15,4 +15,44 @@ debian:
     srv-5:
       ansible_host: 172.19.0.6
 
-  
+switch_bordeaux:
+  hosts:
+    SWA1:
+      ansible_host: 172.19.0.100
+    SWA2:
+      ansible_host: 172.19.0.101
+
+routers_bordeaux:
+  hosts:
+    SWC1:
+      ansible_host: 172.19.0.102
+
+servers_bordeaux:
+    hosts:
+      srv-1:
+        ansible_host: 172.19.0.2
+
+bordeaux:
+  children:
+    switch_bordeaux:
+    routers_bordeaux:
+    servers_bordeaux:
+
+switchs:
+  children:
+    switch_bordeaux:
+
+routers:
+  children:
+    routers_bordeaux:
+
+network:
+  children:
+    switchs:
+    routers:
+
+
+
+
+ 
+
