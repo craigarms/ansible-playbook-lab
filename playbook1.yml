@@ -1,0 +1,18 @@
+---
+- name: Creation de user et INstallation de Soft
+  hosts: debian
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Vérifier la présence du user CESI
+      ansible.builtin.user:
+        name: cesi
+
+    - name: Vérifier la présence du groupe CESI
+      ansible.builtin.group:
+        name: cesi
+
+    - name: Installer les soft debian
+      ansible.builtin.apt:
+        name: vim

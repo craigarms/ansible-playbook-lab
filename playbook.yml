@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Test
+      ansible.builtin.ping:
+
+    - name: Gather-Facts
+      ansible.builtin.gather_facts:
+      register: facts
+
+    - name: Debug Message
+      ansible.builtin.debug:
+        var: facts

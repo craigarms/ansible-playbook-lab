@@ -1,0 +1,21 @@
+local:
+  hosts:
+    localhost:
+
+debian:
+  hosts:
+    srv-1:
+      ansible_host: 172.19.0.2
+    srv-2:
+      ansible_host: 172.19.0.3
+    srv-3:
+      ansible_host: 172.19.0.4
+    srv-4:
+      ansible_host: 172.19.0.5
+    srv-5:
+      ansible_host: 172.19.0.6
+  vars:
+    ansible_become_password: ansibleansible
+    ansible_user: ansible
+    ansible_password: ansibleansible
+  
