@@ -1,0 +1,9 @@
+---
+users:
+  - cesi
+  - micsi
+  - cesi_adm
+
+ansible_become_password: ansibleansible
+ansible_user: ansible
+ansible_password: ansibleansible

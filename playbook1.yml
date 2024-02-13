@@ -1,18 +1,35 @@
 ---
 - name: Creation de user et INstallation de Soft
   hosts: debian
-  gather_facts: false
+  gather_facts: true
   become: true
+  vars_files: vars/groups.yml
 
   tasks:
+    - ansible.builtin.include_vars: vars/soft.yml
+      tags:
+        - soft
+
     - name: Vérifier la présence du user CESI
       ansible.builtin.user:
-        name: cesi
+        name: "{{ item }}"
+      loop: "{{ users }}"
+      tags:
+        - users
+        - userandgroups
 
     - name: Vérifier la présence du groupe CESI
       ansible.builtin.group:
-        name: cesi
+        name: "{{ item }}"
+      loop: "{{ groupes }}"
+      tags:
+        - groups
+        - userandgroups
 
     - name: Installer les soft debian
       ansible.builtin.apt:
-        name: vim
+        name: "{{ item }}"
+      loop: "{{ software[ansible_distribution].pkg }}"
+      tags:
+        - soft
+      

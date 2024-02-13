@@ -1,0 +1,12 @@
+---
+software:
+  Debian:
+    pkg:
+      - pip
+      - wget
+    pip:
+      - python3-docker
+  centos:
+    pkg:
+      - pip
+      - wget 

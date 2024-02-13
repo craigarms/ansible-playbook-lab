@@ -1,0 +1,5 @@
+---
+software:
+  Debian:
+    pkg:
+      - nmap
